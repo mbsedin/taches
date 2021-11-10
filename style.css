@@ -1,0 +1,14 @@
+#task {
+  margin-bottom: 0;
+}
+small {
+  visibility: hidden;
+}
+.warning {
+  color: red;
+  visibility: visible;
+}
+
+[value="Ajouter une tache"] {
+  margin: 10px 0 0 10px;
+}
