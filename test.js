@@ -4,8 +4,6 @@ const taskList = document.querySelector(".collection");
 const clearBtn = document.querySelector(".clear-tasks");
 const filter = document.querySelector("#filter");
 
-
-
 form.addEventListener("submit", (e) => {
   if (taskInput.value === "") {
     taskInput.style.borderBottom = "1px solid red";
@@ -22,8 +20,11 @@ form.addEventListener("submit", (e) => {
     li.appendChild(link);
     taskList.appendChild(li);
   }
-  //vider taskInput a la soumission du formulaire
+
+  // Stocker dans local storage
   storeTaskInLocalStorage(taskInput.value);
+
+  //vider taskInput a la soumission du formulaire
   taskInput.value = "";
   e.preventDefault();
 });
@@ -61,6 +62,18 @@ document.addEventListener("DOMContentLoaded", function () {
     li.appendChild(link);
     taskList.appendChild(li);
   });
+});
+
+// SUPPRIMER TOUTES LES TACHES
+clearBtn.addEventListener("click", function () {
+  // methode 1:
+  // taskList.innerHTML = "";
+  // methode 2
+  while (taskList.firstChild) {
+    taskList.removeChild(taskList.firstChild);
+  }
+  // SUPPRIMER TOUTES LES TACHES DU STOCKAGE LOCAL
+  localStorage.clear();
 });
 
 // vider taskInput au chargement de la page
